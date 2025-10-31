@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "synrxnval"
+version = '0.1.0'
+description = "Validate synthetic SMILES reactions."
+authors = [{ email = "yves.grandjean@unibe.ch", name = "Yves Grandjean" },]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.8.16"
+dependencies = [
+  "numpy<2.0,>=1.19.5",
+  "pandas>=1.1.5",
+  "pyarrow",
+  "fastparquet",
+  "polars",
+  "opennmt-py@git+https://github.com/reymond-group/OpenNMT-py#71fb9f70e887589941be291b762a8bdad8aa9437",     
+    ]
+
+
+[tool.setuptools.packages.find]
+where=["src"]
+
+
+[project.scripts]
+synrxnval = "synrxnval.cli:main"
+
+
+[project.urls]
+repository = "https://github.com/yvsgrndjn/synrxnval"
