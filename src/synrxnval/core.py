@@ -346,7 +346,7 @@ class SynRxnVal:
 
 
     
-    def main(self, out_dir: str = './outputs', smi_rxn_tuple_list: list[tuple[str]] | None = None, chunk_id: int | None = None)->int:
+    def main(self, out_dir: str = './outputs', smi_rxn_tuple_list: list[tuple[str]] | None = None, chunk_id: str | None = None)->int:
         """
         Execute the full SynRxnVal pipeline.
         """
@@ -384,7 +384,7 @@ class SynRxnVal:
         df.drop(columns=['tag_rxn', 'tok_tag_rxn', 'tok_rxn', 'tok_tag_reac'], inplace=True)
 
         base_name = "val_full_synthetic_reactions"
-        if chunk_id is not None:
+        if chunk_id:
             base_name += f"chunk{chunk_id}"
 
         print(f"Saving results...")

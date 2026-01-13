@@ -9,7 +9,7 @@ def main():
     parser.add_argument("--t3_model", required=True, help="Path to forward prediction model (T3).")
     parser.add_argument("--out_dir", default="./outputs", help="Output directory for results.")
     parser.add_argument("--beam_size", type=int, default=3)
-    parser.add_argument("--chunk_id", type=int, default=None)
+    parser.add_argument("--chunk_id", type=str, default=None)
     parser.add_argument("--time", action="store_true", help="Measure and print total runtime.")
     args = parser.parse_args()
 
