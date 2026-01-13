@@ -19,7 +19,10 @@ def smiles_tokens(smiles: str) -> str:
     Raises AssertionError if tokenization alters SMILES.
     """
     if not isinstance(smiles, str) or not smiles.strip():
-        warnings.warn(f"Invalid SMILES type or empty: {repr(smiles)}, RunTimeWarning")
+        warnings.warn(
+            f"Invalid SMILES type or empty: {repr(smiles)}", 
+            RuntimeWarning,
+        )
         return None
     
     pattern = (
@@ -34,6 +37,7 @@ def smiles_tokens(smiles: str) -> str:
             f"Non-matching tokenization, possible exotic SMILES: {smiles}",
             RuntimeWarning,
         )
+        return None
 
     return " ".join(tokens) if tokens else None
 
@@ -342,7 +346,7 @@ class SynRxnVal:
 
 
     
-    def main(self, out_dir: str = './outputs', smi_rxn_tuple_list: list[tuple[str]] | None = None, chunk_id: int | None = None):
+    def main(self, out_dir: str = './outputs', smi_rxn_tuple_list: list[tuple[str]] | None = None, chunk_id: int | None = None)->int:
         """
         Execute the full SynRxnVal pipeline.
         """
@@ -385,3 +389,4 @@ class SynRxnVal:
 
         print(f"Saving results...")
         self.save_reactions(df, out_dir, base_name=base_name)
+        return len(df)
